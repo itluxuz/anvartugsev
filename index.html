@@ -3,40 +3,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Video Page</title>
+    <title>Kodni tekshirish</title>
     <style>
         body {
-            margin: 0;
-            padding: 0;
             font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom right, #4facfe, #00f2fe);
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #ffc8c8;
+            margin: 0;
+            color: #333;
         }
 
-        .video-container {
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
             width: 90%;
-            max-width: 800px;
-            aspect-ratio: 16 / 9;
-            background-color: #000;
-            overflow: hidden;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
         }
 
-        iframe {
+        h1 {
+            margin-bottom: 20px;
+            color: #0078d7;
+        }
+
+        input[type="text"] {
             width: 100%;
-            height: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button {
+            background: #0078d7;
+            color: white;
             border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background: #005bb5;
+        }
+
+        #message {
+            margin-top: 10px;
+            font-weight: bold;
         }
     </style>
+    <script>
+        const correctCode = "1801"; // Bu joyda to'g'ri kodni o'zgartirishingiz mumkin
+
+        function checkCode() {
+            const userInput = document.getElementById("codeInput").value;
+            const message = document.getElementById("message");
+
+            if (userInput === correctCode) {
+                message.style.color = "green";
+                message.textContent = "Kod to'g'ri! Keyingi sahifaga o'tyapsiz...";
+
+                setTimeout(() => {
+                    window.location.href = "asosiy.html"; // O'zingizning keyingi sahifangizni shu yerda belgilang
+                }, 2000);
+            } else {
+                message.style.color = "red";
+                message.textContent = "Kod noto'g'ri! Qayta urinib ko'ring.";
+            }
+        }
+    </script>
 </head>
 <body>
-    <div class="video-container">
-        <!-- Video-ni bu yerga joylang -->
-        <iframe src="IMG_3935.MOV" allowfullscreen></iframe>
+    <div class="container">
+        <h1>Kodni tasdiqlash</h1>
+        <p>Iltimos, kodni kiriting:</p>
+        <input type="text" id="codeInput" placeholder="Kod kiriting">
+        <button onclick="checkCode()">Tasdiqlash</button>
+        <p id="message"></p>
     </div>
 </body>
 </html>
